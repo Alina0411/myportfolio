@@ -1,0 +1,70 @@
+<section class="about" #aboutSection>
+  <div class="about__grid"></div>
+  <div class="about__noise"></div>
+  <div class="about__geo"></div>
+  <div class="about__glow-top"></div>
+
+  <div class="about__header">
+    <span class="about__header-line"></span>
+    <h2 class="about__header-title">ABOUT_ME</h2>
+    <span class="about__header-line"></span>
+  </div>
+
+  <div class="about__layout">
+    <!-- Left: profile card -->
+    <div class="about__profile">
+      <div class="about__profile-border"></div>
+      <div class="about__profile-inner">
+        <div class="about__avatar">
+          <span class="about__avatar-icon">A</span>
+          <div class="about__avatar-ring"></div>
+        </div>
+
+        <h3 class="about__name">{{ data.name }}</h3>
+        <p class="about__role">{{ data.role }}</p>
+
+        <div class="about__meta">
+          <div class="about__meta-item">
+            <span class="about__meta-label">EXP</span>
+            <span class="about__meta-value">{{ data.experience }}</span>
+          </div>
+          <div class="about__meta-divider"></div>
+          <div class="about__meta-item">
+            <span class="about__meta-label">LOC</span>
+            <span class="about__meta-value">{{ data.location }}</span>
+          </div>
+          <div class="about__meta-divider"></div>
+          <div class="about__meta-item">
+            <span class="about__meta-label">STATUS</span>
+            <span class="about__meta-value about__meta-value--active">
+              <span class="about__status-dot"></span>
+              Open to work
+            </span>
+          </div>
+        </div>
+
+        <p class="about__summary">{{ data.summary }}</p>
+      </div>
+    </div>
+
+    <!-- Right: skill categories -->
+    <div class="about__skills">
+      @for (cat of data.skillCategories; track cat.title; let i = $index) {
+        <div class="about__category" [style.--delay]="i * 0.1 + 's'">
+          <div class="about__category-header">
+            <span class="about__category-index">0{{ i + 1 }}</span>
+            <h4 class="about__category-title">{{ cat.title }}</h4>
+          </div>
+          <ul class="about__category-list">
+            @for (skill of cat.skills; track skill) {
+              <li class="about__skill-item">
+                <span class="about__skill-marker">{{ cat.icon }}</span>
+                {{ skill }}
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>

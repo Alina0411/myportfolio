@@ -1,0 +1,52 @@
+main {
+  min-height: 100vh;
+  background: var(--bg-deep);
+  overflow-x: clip;
+}
+
+.sections {
+  position: relative;
+  overflow-x: clip;
+}
+
+// Sparse glows — only where needed
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+// Projects section — centered magenta+violet blend
+.glow--1 {
+  width: 700px;
+  height: 700px;
+  background: var(--neon-magenta);
+  filter: blur(150px);
+  opacity: 0.08;
+  top: 48%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// Pipeline area — lime glow
+.glow--2 {
+  width: 500px;
+  height: 500px;
+  background: var(--neon-lime);
+  filter: blur(150px);
+  opacity: 0.05;
+  top: 70%;
+  right: 10%;
+}
+
+// Contact — violet bottom-right
+.glow--3 {
+  width: 600px;
+  height: 600px;
+  background: var(--neon-violet);
+  filter: blur(140px);
+  opacity: 0.08;
+  bottom: -2%;
+  left: 20%;
+}

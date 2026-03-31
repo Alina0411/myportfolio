@@ -1,0 +1,74 @@
+<section class="pipe" #pipeSection>
+  <div class="pipe__bg-grid"></div>
+  <div class="pipe__bg-noise"></div>
+  <div class="pipe__bg-geo"></div>
+
+  <div class="pipe__header">
+    <span class="pipe__header-line"></span>
+    <h2 class="pipe__header-title">CI_CD_PIPELINE</h2>
+    <span class="pipe__header-line"></span>
+  </div>
+
+  <p class="pipe__subtitle">
+    Как этот сайт попадает в продакшен — от git push до live
+  </p>
+
+  <div class="pipe__desc">
+    <p>Каждый коммит запускает автоматический пайплайн через GitHub Actions:
+      линтинг, тесты, сборка и деплой на Vercel. Весь процесс занимает ~2 минуты.</p>
+  </div>
+
+  <!-- Horizontal pipeline -->
+  <div class="pipe__track" #pipeTrack>
+    <!-- Horizontal line -->
+    <div class="pipe__line">
+      <div class="pipe__line-fill" #lineFill></div>
+    </div>
+
+    <div class="pipe__nodes">
+      @for (step of steps; track step.id; let i = $index) {
+        <div class="pipe__node" [attr.data-step]="step.id">
+          <div class="pipe__node-dot">
+            <span class="pipe__node-icon">{{ step.icon }}</span>
+            <span class="pipe__node-check">✓</span>
+          </div>
+          <div class="pipe__node-info">
+            <div class="pipe__node-label">{{ step.label }}</div>
+            <div class="pipe__node-cmd">{{ step.command }}</div>
+            @if (step.duration) {
+              <div class="pipe__node-dur">{{ step.duration }}</div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Progress counter -->
+  <div class="pipe__progress" #pipeProgress>
+    <span class="pipe__progress-label">STEP</span>
+    <span class="pipe__progress-current" #progressNum>1</span>
+    <span class="pipe__progress-sep">/</span>
+    <span class="pipe__progress-total">{{ steps.length }}</span>
+  </div>
+
+  <!-- Active step detail card -->
+  <div class="pipe__detail" #pipeDetail>
+    <div class="pipe__detail-border"></div>
+    <div class="pipe__detail-inner">
+      <div class="pipe__detail-topbar">
+        <div class="pipe__detail-dots"><span></span><span></span><span></span></div>
+        <span class="pipe__detail-title">terminal</span>
+      </div>
+      <div class="pipe__detail-body">
+        <div class="pipe__detail-line">
+          <span class="pipe__detail-prompt">$</span>
+          <span class="pipe__detail-text" #detailText>git push origin main</span>
+        </div>
+        <div class="pipe__detail-status" #detailStatus>
+          <span class="pipe__detail-badge">RUNNING</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
