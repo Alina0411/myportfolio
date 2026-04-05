@@ -128,8 +128,8 @@ export const PROJECTS_DATA: Project[] = [
     accentColor: '#00f0ff',
     type: 'SPA / Productivity',
     images: ['img-portfolio/habits-light.png', 'img-portfolio/habits-dark.png'],
-    link: '#',
-    repo: 'https://github.com/your_username/habit-tracker',
+    link: 'https://habits.byalina.ru',
+    repo: 'https://github.com/Alina0411/habit-tracker',
   },
   {
     id: 2,
@@ -140,7 +140,7 @@ export const PROJECTS_DATA: Project[] = [
     accentColor: '#ff00aa',
     type: 'Landing / Бизнес',
     images: ['img-portfolio/orh.png'],
-    link: '#',
+    link: 'https://orchidea-beauty40.ru',
   },
   {
     id: 3,
@@ -151,7 +151,7 @@ export const PROJECTS_DATA: Project[] = [
     accentColor: '#b400ff',
     type: 'Dashboard / Admin',
     images: ['img-portfolio/admin-dashboard.png', 'img-portfolio/admin-services.png'],
-    link: '#',
+    link: 'https://admin.byalina.ru',
   },
 ];
 
