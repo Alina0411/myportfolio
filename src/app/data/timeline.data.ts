@@ -26,6 +26,7 @@ export const TIMELINE_DATA: TimelineStage[] = [
     skills: [
       'HTML5',
       'CSS3',
+      'SCSS',
       'JavaScript ES6+',
       'Git',
       'Figma',
@@ -39,12 +40,12 @@ export const TIMELINE_DATA: TimelineStage[] = [
     icon: '💼',
     accentColor: '#27AE60',
     description:
-      'Коммерческие проекты для малого бизнеса. 10+ проектов, включая Telegram-ботов. Первый опыт общения с заказчиками и оценки сроков.',
+        'Коммерческие проекты для малого бизнеса. Разработка лендингов и интерфейсов, взаимодействие с заказчиками, оценка сроков и самостоятельный деплой.',
     skills: [
       'SCSS/BEM',
       'Pixel-perfect вёрстка',
-      'REST API',
-      'Telegram Bot API',
+      'Адаптивная вёрстка',
+      'Интеграция API',
       'Деплой',
     ],
   },
@@ -71,7 +72,7 @@ export const TIMELINE_DATA: TimelineStage[] = [
         ],
       },
       {
-        title: 'Интеграция с экенд и настройка CI/CD',
+        title: 'Интеграция с бэкенд и настройка CI/CD',
         skills: [
           'JWT Auth',
           'Docker',
@@ -167,15 +168,15 @@ export const ABOUT_DATA = {
   experience: '3+ года',
   location: 'Россия',
   summary:
-    'Фронтенд-разработчик с фокусом на Angular-экосистему. Прошла путь от самообучения и фриланса до полноценной работы в продуктовой команде. Самостоятельно веду фичи от проектирования до деплоя. Активно участвую в code review и менторинге.',
+    'Фронтенд-разработчик с фокусом на Angular-экосистему. Прошла путь от самообучения и фриланса до полноценной работы в команде. Разрабатываю SPA-приложения на Angular: от создания компонентов и интеграции API до настройки сборки и деплоя.',
   skillCategories: [
     {
       title: 'Frontend Core',
       icon: '▸',
       skills: [
         'Angular 17+ (Standalone, Signals, New Control Flow)',
-        'TypeScript (Generics, Utility Types, Decorators)',
-        'RxJS (Custom operators, Race conditions)',
+        'TypeScript (Interfaces, Types, Decorators)',
+        'RxJS (Observables, Operators, Subjects)',
         'HTML5, CSS3, SCSS/SASS, BEM',
       ],
     },
@@ -183,19 +184,19 @@ export const ABOUT_DATA = {
       title: 'State & Data',
       icon: '▸',
       skills: [
-        'NgRx (Store, Effects, Selectors)',
-        'NgRx Component Store',
-        'REST API, WebSocket, Interceptors',
+        'State Management (Signals, RxJS)',
+        'REST API, HTTP Interceptors',
         'JWT авторизация, Guards',
+        'Reactive Forms',
       ],
     },
     {
       title: 'Tooling & DevOps',
       icon: '▸',
       skills: [
-        'Git Flow, Code Review, PR',
+        'Git, GitHub, Code Review',
         'Docker + Nginx',
-        'CI/CD (GitLab CI, GitHub Actions)',
+        'CI/CD (GitHub Actions)',
         'ESLint, Prettier',
       ],
     },
@@ -203,10 +204,10 @@ export const ABOUT_DATA = {
       title: 'Testing & Quality',
       icon: '▸',
       skills: [
-        'Jest',
-        'Компонентные тесты, моки сервисов',
+        'Angular CLI',
+        'Chrome DevTools',
         'Performance: OnPush, trackBy',
-        'Angular CLI, Chrome DevTools',
+        'Unit testing basics',
       ],
     },
   ] as SkillCategory[],
