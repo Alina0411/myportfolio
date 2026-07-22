@@ -1,0 +1,172 @@
+.contact {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 4rem;
+}
+
+:host {
+  display: block;
+}
+
+:host:last-child {
+  padding-bottom: 0;
+}
+
+.contact__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(180, 0, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 0, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 55% 60% at 50% 50%, black 20%, transparent 65%);
+  pointer-events: none;
+}
+
+.contact__bg-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+  pointer-events: none;
+}
+
+// Diamond/cross pattern — unique geo for contact
+.contact__bg-geo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image:
+    linear-gradient(45deg, var(--neon-violet) 1px, transparent 1px),
+    linear-gradient(-45deg, var(--neon-violet) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 10%, transparent 55%);
+}
+
+.contact__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 560px;
+  width: 100%;
+}
+
+.contact__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+}
+
+.contact__label-marker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--neon-violet);
+}
+
+.contact__label-text {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.contact__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.contact__title-accent {
+  color: var(--neon-magenta);
+  text-shadow: 0 0 20px rgba(255, 0, 170, 0.3);
+}
+
+.contact__text {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  opacity: 0;
+}
+
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-bottom: 3rem;
+  opacity: 0;
+}
+
+.contact__link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+
+  &:hover {
+    background: rgba(0, 240, 255, 0.04);
+    border-color: rgba(0, 240, 255, 0.15);
+
+    .contact__link-icon {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .contact__link-arrow {
+      transform: translateX(4px);
+      color: var(--neon-cyan);
+    }
+  }
+}
+
+.contact__link-icon {
+  color: var(--text-muted);
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.contact__link-info {
+  flex: 1;
+  text-align: left;
+}
+
+.contact__link-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.contact__link-hint {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.contact__link-arrow {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}

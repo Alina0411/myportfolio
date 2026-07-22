@@ -1,0 +1,145 @@
+<section class="proj" #projSection>
+  <div class="proj__bg-grid"></div>
+  <div class="proj__bg-noise"></div>
+  <div class="proj__bg-geo"></div>
+
+  <div class="proj__header">
+    <span class="proj__header-line"></span>
+    <h2 class="proj__header-title">SELECTED_WORK</h2>
+    <span class="proj__header-line"></span>
+  </div>
+
+  <div class="proj__grid">
+    @for (project of projects; track project.id; let i = $index) {
+      <div class="proj__card" [style.--accent]="project.accentColor">
+        <div class="proj__card-border"></div>
+        <div class="proj__card-inner">
+          <!-- Top bar -->
+          <div class="proj__card-topbar">
+            <div class="proj__card-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="proj__card-type">{{ project.type }}</span>
+            <span class="proj__card-id">_0{{ project.id }}</span>
+          </div>
+
+          <!-- Preview area -->
+          <div class="proj__preview" (click)="openLightbox(project, 0)">
+            <img
+              class="proj__preview-img proj__preview-img--default"
+              [src]="project.images[0]"
+              [alt]="project.title"
+            />
+            @if (project.images[1]) {
+              <img
+                class="proj__preview-img proj__preview-img--hover"
+                [src]="project.images[1]"
+                [alt]="project.title + ' — alt'"
+              />
+            }
+            <div class="proj__preview-zoom">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                <path d="M11 8v6"/><path d="M8 11h6"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="proj__card-content">
+            <h3 class="proj__card-title">{{ project.title }}</h3>
+            <p class="proj__card-desc">{{ project.description }}</p>
+
+            <div class="proj__card-stack">
+              @for (tech of project.stack; track tech) {
+                <app-skill-tag
+                  [label]="tech"
+                  [accentColor]="project.accentColor"
+                />
+              }
+            </div>
+
+            <div class="proj__card-buttons">
+              @if (project.link) {
+                <a class="proj__card-demo" [href]="project.link" target="_blank" rel="noopener">
+                  <span class="proj__card-demo-icon">&#9654;</span>
+                  LIVE DEMO
+                </a>
+              }
+              @if (project.repo) {
+                <a class="proj__card-demo proj__card-demo--code" [href]="project.repo" target="_blank" rel="noopener">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                  </svg>
+                  CODE
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Lightbox -->
+@if (lbProject) {
+  <div class="lb" (click)="closeLightbox()">
+    <div class="lb__inner" (click)="$event.stopPropagation()">
+      <!-- Close -->
+      <button class="lb__close" (click)="closeLightbox()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+
+      <!-- Image area -->
+      <div class="lb__img-wrap">
+        @if (lbProject.images.length > 1) {
+          <button class="lb__nav lb__nav--prev" (click)="lbPrev()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+        }
+
+        <img class="lb__img" [src]="lbProject.images[lbIndex]" [alt]="lbProject.title" />
+
+        @if (lbProject.images.length > 1) {
+          <button class="lb__nav lb__nav--next" (click)="lbNext()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </button>
+        }
+      </div>
+
+      <!-- Counter -->
+      @if (lbProject.images.length > 1) {
+        <div class="lb__counter">{{ lbIndex + 1 }} / {{ lbProject.images.length }}</div>
+      }
+
+      <!-- Info -->
+      <div class="lb__info" [style.--accent]="lbProject.accentColor">
+        <h3 class="lb__title">{{ lbProject.title }}</h3>
+        <p class="lb__desc">{{ lbProject.description }}</p>
+        <div class="lb__buttons">
+          @if (lbProject.link) {
+            <a class="lb__demo" [href]="lbProject.link" target="_blank" rel="noopener">
+              <span class="lb__demo-icon">&#9654;</span>
+              LIVE DEMO
+            </a>
+          }
+          @if (lbProject.repo) {
+            <a class="lb__demo" [href]="lbProject.repo" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+              CODE
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

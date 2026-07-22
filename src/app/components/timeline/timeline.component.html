@@ -1,0 +1,43 @@
+<section class="tl" #timelineSection>
+  <div class="tl__bg">
+    <div class="tl__bg-grid"></div>
+    <div class="tl__bg-noise"></div>
+    <div class="tl__bg-geo"></div>
+    <div class="tl__bg-glow tl__bg-glow--1"></div>
+    <div class="tl__bg-glow tl__bg-glow--2"></div>
+  </div>
+  <div class="tl__content">
+    <div class="tl__header">
+      <span class="tl__header-line"></span>
+      <h2 class="tl__header-title">EXPERIENCE_LOG</h2>
+      <span class="tl__header-line"></span>
+    </div>
+
+    <!-- Neon wire -->
+    <div class="tl__wire" #wire>
+      <div class="tl__wire-track"></div>
+      <div class="tl__wire-fill" #wireFill></div>
+      <div class="tl__wire-pulse" #wirePulse></div>
+    </div>
+
+    @for (stage of stages; track stage.id; let i = $index) {
+      <div
+        class="tl__item"
+        [class.tl__item--left]="i % 2 === 0"
+        [class.tl__item--right]="i % 2 !== 0"
+      >
+        <div
+          class="tl__node"
+          [style.--accent]="stage.accentColor"
+          #nodes
+        ></div>
+        <div class="tl__connector" [style.--accent]="stage.accentColor"></div>
+        <app-timeline-card
+          [stage]="stage"
+          [side]="i % 2 === 0 ? 'left' : 'right'"
+          #cards
+        />
+      </div>
+    }
+  </div>
+</section>

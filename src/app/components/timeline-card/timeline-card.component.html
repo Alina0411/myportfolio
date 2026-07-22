@@ -1,0 +1,49 @@
+<div
+  class="card"
+  [class.card--left]="side === 'left'"
+  [class.card--right]="side === 'right'"
+  [style.--accent]="stage.accentColor"
+>
+  <div class="card__border"></div>
+  <div class="card__inner">
+    <div class="card__header">
+      <span class="card__icon">{{ stage.icon }}</span>
+      <div class="card__meta">
+        <span class="card__year">{{ stage.year }}</span>
+        <span class="card__id">_0{{ stage.id }}</span>
+      </div>
+    </div>
+
+    <h3 class="card__title">{{ stage.title }}</h3>
+    <p class="card__subtitle">{{ stage.subtitle }}</p>
+    <p class="card__description">{{ stage.description }}</p>
+
+    @if (stage.subStages && stage.subStages.length > 0) {
+      @for (sub of stage.subStages; track sub.title) {
+        <div class="card__substage">
+          <div class="card__substage-header">
+            <span class="card__substage-marker"></span>
+            <h4 class="card__substage-title">{{ sub.title }}</h4>
+          </div>
+          <div class="card__skills">
+            @for (skill of sub.skills; track skill) {
+              <app-skill-tag
+                [label]="skill"
+                [accentColor]="stage.accentColor"
+              />
+            }
+          </div>
+        </div>
+      }
+    } @else {
+      <div class="card__skills">
+        @for (skill of stage.skills; track skill) {
+          <app-skill-tag
+            [label]="skill"
+            [accentColor]="stage.accentColor"
+          />
+        }
+      </div>
+    }
+  </div>
+</div>
