@@ -1,4 +1,32 @@
-node_modules/
+# Angular build
+/dist
+/tmp
+/out-tsc
+
+# Dependencies
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment
+.env
+.env.*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Angular cache
+.angular/
+
+# Logs
+*.lognode_modules/
 dist/
 .angular/
 .DS_Store
